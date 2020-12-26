@@ -51,8 +51,8 @@
           /
           <a href="javascript:void(0)" onclick="showregistered()"> 注册 </a>
         </div>
-        <div class="headerlogin_divok">
-          <div class="headerlogin_div_center">
+        <div class="headerlogin_divok" >
+          <div class="headerlogin_div_center" >
             <img src="" alt="" class="Avatar" />
             <div class="user_name ov"></div>
             <img
