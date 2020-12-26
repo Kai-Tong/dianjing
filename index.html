@@ -306,8 +306,9 @@
   $('login_header').hide()
 
   function showlogin() {
-      $('.login').show();
-      $('.registered').hide();
+    console.log($('#login'))
+      $('#login').show();
+      $('#registered').hide();
   }
 
   function showregistered() {

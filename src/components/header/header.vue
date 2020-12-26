@@ -47,9 +47,9 @@
         </div>
         <div class="headerlogin_div">
           <img src="../image/ic-login@2x.png" alt="" />
-          <a href="javascript:void(0)" onclick="showlogin()"> 登录 </a>
+          <span onclick="showlogin()"> 登录 </span>
           /
-          <a href="javascript:void(0)" onclick="showregistered()"> 注册 </a>
+          <span onclick="showregistered()"> 注册 </span>
         </div>
         <div class="headerlogin_divok" >
           <div class="headerlogin_div_center" >
@@ -85,7 +85,7 @@
       </div>
     </div>
     <!-- 登录 -->
-    <div id="login">
+    <div id="login" >
       <div class="login">
         <div class="login_header cl">
           <div class="dxlogin left"></div>
