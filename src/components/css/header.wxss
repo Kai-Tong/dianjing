@@ -1,0 +1,332 @@
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-image: url('../image/header-bg@2x.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.header_box {
+  display: flex;
+  height: 75px;
+  padding-bottom: 18px;
+  align-items: center;
+}
+.header_logo {
+  margin-left: 166px;
+}
+.header_logo img {
+  width: 75px;
+  height: 62px;
+}
+.header_nav {
+  display: flex;
+  align-items: center;
+  margin-left: 22px;
+}
+.header_home {
+  background-image: url('../image/首页1@2x.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 125px;
+  height: 73px;
+}
+.header_home:hover {
+  background-image: url('../image/首页2@2x.png');
+}
+.header_home1 {
+  background-image: url('../image/首页2@2x.png');
+}
+.Schedule {
+  background-image: url('../image/赛程1@2x.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 125px;
+  height: 73px;
+}
+.Schedule:hover {
+  background-image: url('../image/赛程2@2x.png');
+}
+.Schedule1 {
+  background-image: url('../image/赛程2@2x.png');
+}
+.advisory {
+  background-image: url('../image/资讯1@2x.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 125px;
+  height: 73px;
+}
+.advisory:hover {
+  background-image: url('../image/资讯2@2x.png');
+}
+.advisory1 {
+  background-image: url('../image/资讯2@2x.png');
+}
+.header_forum {
+  background-image: url('../image/论坛1@2x.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 125px;
+  height: 73px;
+}
+.header_forum:hover {
+  background-image: url('../image/论坛2@2x.png');
+}
+.header_forum1 {
+  background-image: url('../image/论坛2@2x.png');
+}
+.navfenge {
+  background-image: url('../image/nav-分割@2x.png');
+  width: 2px;
+  height: 33px;
+}
+.navfenge1 {
+  background-image: url('../image/nav-分割@2x.png');
+  width: 2px;
+  height: 33px;
+  margin: 0 16px;
+}
+.header_search {
+  margin-left: 253px;
+  width: 290px;
+  height: 45px;
+  background-image: linear-gradient(#1e1e23, #1e1e23), linear-gradient(#f0d38f, #f0d38f);
+  background-blend-mode: normal,
+        normal;
+  border-radius: 23px;
+  opacity: 0.45;
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  /*no*/
+  color: #fff;
+}
+.header_search_img {
+  background-image: url('../image/search1@2x.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 18px;
+  margin: auto;
+}
+.header_search_img:hover {
+  background-image: url('../image/search2@2x.png');
+}
+.header_search input {
+  border: none;
+  background-image: linear-gradient(#1e1e23, #1e1e23), linear-gradient(#f0d38f, #f0d38f);
+  background-blend-mode: normal,
+        normal;
+  color: #fff;
+  width: 166px;
+  font-size: 16px;
+  /*no*/
+}
+.headerseles_img {
+  margin-left: 6px;
+  background-image: url('../image/帖子-down1@2x.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 8px;
+}
+.headerseles_img:hover {
+  background-image: url('../image/帖子-down2@2x.png');
+}
+.headerseles {
+  margin-left: 19px;
+  color: #828282;
+  font-size: 14px;
+  /*no*/
+  width: 40px;
+  text-align: center;
+}
+.headerseles_more_div {
+  position: absolute;
+  display: none;
+  left: 30px;
+  bottom: -50px;
+  background-image: linear-gradient(#1e1e23, #1e1e23), linear-gradient(#f0d38f, #f0d38f);
+}
+.headerseles_more {
+  color: #fff;
+  font-size: 14px;
+  /*no*/
+  width: 60px;
+  text-align: center;
+}
+.headerseles:hover {
+  color: #fdfdfd;
+}
+.headerseles_more:hover {
+  color: #fdfdfd;
+  cursor: pointer;
+}
+.headerlogin_div {
+  margin-left: 22px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  /*no*/
+  color: #fdfdfe;
+}
+.headerlogin_div a {
+  color: #fdfdfe;
+  margin: 0 10px;
+}
+.headerlogin_div a:hover {
+  color: #f0d38f;
+}
+.headerlogin_div_center {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  /*no*/
+  color: #f0d38f;
+  margin: 0 20px;
+}
+.Avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.user_name {
+  width: 90px;
+}
+.login_exit {
+  color: #f0d38f;
+  border: 1px  solid #f0d38f;
+  font-size: 16px;
+  /*no*/
+  width: 50px;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 4px;
+}
+.login_exit:hover {
+  cursor: pointer;
+}
+.header_xiala {
+  width: 20px;
+  height: 20px;
+}
+.header_xiala:hover {
+  cursor: pointer;
+}
+.headerdown {
+  display: flex;
+  align-items: center;
+  color: #fdfdfd;
+  font-size: 20px;
+  /*no*/
+}
+.headerlogin_divok {
+  position: relative;
+  display: none;
+}
+.header_showsuer {
+  display: none;
+  position: absolute;
+  right: 30%;
+  background: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-size: 14px;
+  /*no*/
+  width: 90px;
+  z-index: 100;
+}
+.header_showsuer a {
+  color: #fff;
+}
+.headerdown_img {
+  background-image: url('../image/ic-iPhone1@2x.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 17px;
+  height: 25px;
+  margin-left: 24px;
+}
+.headerapptext a {
+  margin-left: 10px;
+  color: #fdfdfd;
+}
+.headerdown:hover .headerdown_img {
+  background-image: url('../image/ic-iPhone2@2x.png');
+  cursor: pointer;
+}
+.headerdown:hover .headerapptext a {
+  cursor: pointer;
+  color: #f0d38f;
+}
+.header_collection {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  /*no*/
+  color: #fdfdfd;
+}
+.header_collection:hover .headercollection_img {
+  cursor: pointer;
+  background-image: url('../image/ic-收藏2@2x.png');
+}
+.header_collection:hover .headercollection_text {
+  cursor: pointer;
+  color: #f0d38f;
+}
+.headercollection_img {
+  background-image: url('../image/ic-收藏1@2x.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 25px;
+}
+.headercollection_text {
+  margin-left: 10px;
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.toast_box {
+  /* width: 100%; */
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  /* justify-content: center; */
+  z-index: 120;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.toast_box p {
+  box-sizing: border-box;
+  padding: 10px 20px;
+  width: max-content;
+  /* 提示框的背景色 */
+  background: #707070;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 6px;
+  opacity: 0.8;
+}
+.toliet {
+  margin: 0 auto;
+}
