@@ -85,7 +85,7 @@
       </div>
     </div>
     <!-- 登录 -->
-    <div id="login" >
+    <div id="login" style="display:none">
       <div class="login">
         <div class="login_header cl">
           <div class="dxlogin left"></div>
@@ -94,7 +94,7 @@
             <div class="zhlogin_icon"></div>
           </div>
         </div>
-        <div class="login_header1 cl">
+        <div class="login_header1 cl" style="display:none">
           <div class="dxlogin1 left"></div>
           <div class="zhlogin right" onclick="changedxlogin()">
             <div>短信登录</div>
@@ -134,7 +134,7 @@
             </div>
           </div>
         </div>
-        <div class="zhInputDiv">
+        <div class="zhInputDiv" style="display:none">
           <div class="iphonenum">
             <div class="left iphonenum_label">平台账号</div>
             <div class="left iphonenum_input1">
@@ -180,7 +180,7 @@
     </div>
 
     <!-- 注册 -->
-    <div id="registered">
+    <div id="registered" style="display:none">
       <div class="registered">
         <div class="registered_header cl">
           <div>
