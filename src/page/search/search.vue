@@ -1,6 +1,6 @@
 <template>
   <div id="search">
-    <!-- <headerlogin></headerlogin> -->
+    <headerlogin></headerlogin>
     <div class="search_content boxshadow">
       <div class="no1searchheader">搜索结果</div>
       <div class="keywords_div cl">
@@ -155,7 +155,7 @@
 </template>
 
 <script>
-// const headerlogin = () => import("@/page/headerlogin/headerlogin");
+const headerlogin = () => import("@/components/header/header");
 const Footer = () => import("../../components/footer/footer");
 import host from "../../api/httpurl";
 export default {
@@ -355,7 +355,7 @@ export default {
     },
   },
   components: {
-    // headerlogin,
+    headerlogin,
     Footer
   },
   created() {
