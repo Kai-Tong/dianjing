@@ -25,6 +25,7 @@ const Publishvideo = import('../page/publishvideo/publishvideo.vue')
 const Rule = import('../page/rule/rule.vue')
 const Attentionset = import('../page/attentionset/attentionset.vue')
 const Basicdataset = import('../page/basicdataset/basicdataset.vue')
+const Header = import("../components/header/header.vue")
 //获取原型对象上的push函数
 const originalPush = Router.prototype.push
 //修改原型对象中的push方法
@@ -44,6 +45,14 @@ export default new Router({
         requireAuth: true
       },
       component: () => Search
+    },
+    {
+      path: '/header',
+      name: 'Header',
+      // meta: {
+      //   requireAuth: true
+      // },
+      component: () => Header
     },
     {
       path: '/resetpass',

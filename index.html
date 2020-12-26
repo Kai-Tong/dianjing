@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>电竞君</title>
   <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <!-- <link rel="stylesheet" href="./src/style/iconfont.css"> -->
 </head>
 
@@ -14,6 +15,321 @@
   <!-- built files will be auto injected -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+  $("#login").hide();
+  $("#registered").hide()
+  function _addFavorite() {
+      var url = window.location;
+      var title = document.title;
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.indexOf("360se") > -1) {
+          toast("由于360浏览器功能限制，请按 Ctrl+D 手动收藏！");
+      } else if (ua.indexOf("msie 8") > -1) {
+          window.external.AddToFavoritesBar(url, title); //IE8
+      } else if (document.all) { //IE类浏览器
+          try {
+              window.external.addFavorite(url, title);
+          } catch (e) {
+              toast('您的浏览器不支持,请按 Ctrl+D 手动收藏!');
+          }
+      } else if (window.sidebar) { //firfox等浏览器；
+          window.sidebar.addPanel(title, url, "");
+      } else {
+          toast('您的浏览器不支持,请按 Ctrl+D 手动收藏!');
+      }
+  }
+  $('#login').click(function () {
+      $('.login').hide();
+  })
+  $('.login').click(function () {
+      event.stopPropagation();
+  })
+  $('#registered').click(function () {
+      $('.registered').hide();
+  })
+  $('.registered').click(function () {
+      event.stopPropagation();
+  })
+
+  function changesearchtype() {
+      console.log(event.target.innerHTML)
+      $(".headerseles").text(event.target.innerHTML)
+      $('.headerseles_more_div').hide()
+  }
+  //搜索栏目显示隐藏
+  var headerseles_more_flag = false
+  $('.headerseles_more_div').hide()
+
+  function showsearchList() {
+      if (headerseles_more_flag) {
+          $('.headerseles_more_div').hide()
+          headerseles_more_flag = false
+      } else {
+          $('.headerseles_more_div').show()
+          headerseles_more_flag = true
+      }
+  }
+  // 自动登录勾选
+  var clickdengluFlag = false
+  $('.clickdenglu').click(function () {
+      if (clickdengluFlag) {
+          clickdengluFlag = false
+          $('.loginradio').css({
+              'background-image': ' url(../image/自动2@2x.png)',
+          })
+      } else {
+          clickdengluFlag = true
+          $('.loginradio').css({
+              'background-image': ' url(../image/自动1@2x.png)',
+          })
+      }
+
+  })
+  $('.header_showsuer').hide();
+  var showuserflag = false
+
+  function showuser() {
+      if (showuserflag) {
+          $('.header_showsuer').hide();
+          showuserflag = false
+      } else {
+          $('.header_showsuer').show();
+          showuserflag = true
+      }
+
+  }
+
+  function loginexit() {
+      localStorage.removeItem('token')
+      localStorage.removeItem('user_info')
+      istoken()
+  }
+
+  function toast(text) {
+      let toast = document.getElementById('toast');
+      let toast_box = document.getElementsByClassName('toast_box')[0];
+      toast.innerHTML = text;
+      toast_box.style.animation = 'show 1.5s'
+      toast_box.style.display = 'inline-block';
+      setTimeout(function () {
+          toast_box.style.animation = 'hide 1.5s'
+          setTimeout(function () {
+              toast_box.style.display = 'none';
+          }, 1400)
+      }, 1500)
+  }
+
+  istoken()
+
+  function istoken() {
+      var token = localStorage.getItem("token");
+      var user_info = JSON.parse(localStorage.getItem('user_info'));
+      console.log(user_info)
+      if (token != false && token != null) {
+          $(".headerlogin_div").hide()
+          $(".headerlogin_divok").show()
+          $('.Avatar').attr('src', user_info.user_pic);
+          $('.user_name').text(user_info.user_name)
+      } else {
+          $(".headerlogin_divok").hide()
+          $(".headerlogin_div").show()
+      }
+  }
+  //注册
+  function registered() {
+      var name = $('#registered_name').val()
+      var pwd = $('#registered_pwd').val()
+      var pwd2 = $('#registered_pwd2').val()
+      var mobile = $('#registered_iphoenum').val()
+      var vcode = $("#verificationregistered").val()
+      var iphonetest = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
+      var nametest = /[A-Za-z0-9\D]{3,20}/;
+      var pwdtest = /[A-Za-z0-9\D]{6,16}/;
+      var url = 'http://dev.6789zbz.com/apiv2/user_reg'
+      if (nametest.test(name)) {
+          if (pwdtest.test(pwd)) {
+              if (pwd2 == pwd) {
+                  if (iphonetest.test(mobile)) {
+                      $.ajax({
+                          url,
+                          type: 'post',
+                          context: document.body,
+                          data: {
+                              mobile: mobile,
+                              name,
+                              vcode,
+                              pwd: btoa(encodeURIComponent($('#registered_pwd').val())),
+                          },
+                          success: function (data) {
+                              let {
+                                  code,
+                                  msg,
+                                  params
+                              } = data;
+                              if (code == 0) {
+                                  let {
+                                      token,
+                                      user_info
+                                  } = params
+                                  localStorage.setItem("token", token);
+                                  localStorage.setItem("user_info", JSON.stringify(user_info));
+                                  $('.registered').hide();
+                                  istoken()
+                                  toast(msg)
+                              } else {
+                                  toast(msg)
+                              }
+                          }
+                      });
+                  } else {
+                      toast('手机号码不正确')
+                  }
+              } else {
+                  toast('两次密码不一致')
+              }
+          } else {
+              toast('请输入6-16个数字、字母或字符')
+          }
+      } else {
+          toast('请输入3-20个数字、字母或字符')
+      }
+  }
+  //注册验证码
+  function getverificationregistered() {
+      var iphonenum = $("#registered_iphoenum").val()
+      var iphonetest =
+          /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
+      if (iphonetest.test(iphonenum)) {
+          var url = "http://dev.6789zbz.com/apiv2/user_sent_mms/" + iphonenum + '/0'
+          $.ajax({
+              url,
+              context: document.body,
+              success: function (msg) {
+                  console.log(msg)
+              }
+          });
+      }
+
+  }
+  //登录逻辑
+  function loginfn() {
+      var iphonenum = $("#iphonenum_input_login").val();
+      var iphonetest = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
+      var name = $('#zhnum_login').val();
+      var pwd = btoa(encodeURIComponent($('#pwd_login').val()))
+      if (iphonenum != false) {
+          if (iphonetest.test(iphonenum)) {
+              var vcode = $('#vccode_dx').val()
+              $.ajax({
+                  url: "http://dev.6789zbz.com/apiv2/user_login",
+                  type: 'get',
+                  context: document.body,
+                  data: {
+                      mobile: iphonenum,
+                      vcode: vcode,
+                      type: 2
+                  },
+                  success: function (data) {
+                      let {
+                          msg,
+                          code,
+                          params
+                      } = data
+                      if (code == 0) {
+                          $('.login').hide();
+                          localStorage.setItem("token", token);
+                          localStorage.setItem("user_info", JSON.stringify(user_info));
+                          istoken()
+                          toast('登录成功');
+                      } else {
+                          toast(msg);
+                      }
+                  }
+              });
+          }
+      }
+      if (pwd != false) {
+          $.ajax({
+              url: "http://dev.6789zbz.com/apiv2/user_login",
+              type: 'get',
+              context: document.body,
+              data: {
+                  name,
+                  pwd,
+                  type: 1
+              },
+              success: function (data) {
+                  let {
+                      msg,
+                      code,
+                      params
+                  } = data
+                  let {
+                      token,
+                      user_info
+                  } = params
+                  if (code == 0) {
+                      $('.login').hide();
+                      localStorage.setItem("token", token);
+                      localStorage.setItem("user_info", JSON.stringify(user_info));
+                      istoken()
+                      toast('登录成功');
+                  } else {
+                      toast(msg);
+                  }
+              }
+          });
+      }
+  }
+  //获取验证码
+  function getverification() {
+      var iphonenum = $("#iphonenum_input_login").val()
+      var iphonetest = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
+      if (iphonetest.test(iphonenum)) {
+          var url = "http://dev.6789zbz.com/apiv2/user_sent_mms/" + iphonenum + '/1'
+          $.ajax({
+              url,
+              context: document.body,
+              success: function (msg) {
+                  console.log(msg)
+              }
+          });
+      }
+
+  }
+  // 切换状态
+  $('.login').hide();
+  $('.registered').hide();
+  $('.login_header1').hide();
+  $('.zhInputDiv').hide();
+  $('.login_header1').hide();
+  $('login_header').hide()
+
+  function showlogin() {
+      $('.login').show();
+      $('.registered').hide();
+  }
+
+  function showregistered() {
+      $('.registered').show();
+      $('.login').hide();
+  }
+
+  function changezllogin() {
+      $('.login_header').hide()
+      $('.login_header1').show()
+      $('.dxInputDiv').hide();
+      $('.zhInputDiv').show();
+  }
+
+  function changedxlogin() {
+      console.log(2)
+      $('.login_header').show()
+      $('.login_header1').hide()
+      $('.zhInputDiv').hide();
+      $('.dxInputDiv').show();
+  }
+</script>
 <script>
   (function (n, e) {
     var t = n.documentElement,
