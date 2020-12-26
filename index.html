@@ -38,18 +38,18 @@
           toast('您的浏览器不支持,请按 Ctrl+D 手动收藏!');
       }
   }
-  $('#login').click(function () {
-      $('.login').hide();
-  })
-  $('.login').click(function () {
-      event.stopPropagation();
-  })
-  $('#registered').click(function () {
-      $('.registered').hide();
-  })
-  $('.registered').click(function () {
-      event.stopPropagation();
-  })
+  function closelogin(){
+    $('#login').hide();
+  }
+  function evenlogin(){
+    event.stopPropagation();
+  }
+  function closeregistered(){
+    $('#registered').hide();
+  }
+  function evenregistered(){
+    event.stopPropagation();
+  }
 
   function changesearchtype() {
       console.log(event.target.innerHTML)
@@ -241,6 +241,7 @@
                           localStorage.setItem("user_info", JSON.stringify(user_info));
                           istoken()
                           toast('登录成功');
+                          window.location.reload()
                       } else {
                           toast(msg);
                       }

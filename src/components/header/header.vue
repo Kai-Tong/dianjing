@@ -45,16 +45,18 @@
             </div>
           </div>
         </div>
-        <div class="headerlogin_div">
+        <div class="headerlogin_div" v-show="!tokenflag">
           <img src="../image/ic-login@2x.png" alt="" />
           <span onclick="showlogin()"> 登录 </span>
           /
           <span onclick="showregistered()"> 注册 </span>
         </div>
-        <div class="headerlogin_divok" >
-          <div class="headerlogin_div_center" >
-            <img src="" alt="" class="Avatar" />
-            <div class="user_name ov"></div>
+        <div class="headerlogin_divok" v-if="tokenflag">
+          <div class="headerlogin_div_center">
+            <img :src="user_info.user_pic" alt="" class="Avatar" />
+            <div class="user_name ov">
+              {{ user_info.user_nickname || user_info.user_name }}
+            </div>
             <img
               src="../image/forum/down.png"
               alt=""
@@ -85,8 +87,8 @@
       </div>
     </div>
     <!-- 登录 -->
-    <div id="login" style="display:none">
-      <div class="login">
+    <div id="login" style="display: none" onclick="closelogin()">
+      <div class="login" onclick="evenlogin()">
         <div class="login_header cl">
           <div class="dxlogin left"></div>
           <div class="zhlogin right" onclick="changezllogin()">
@@ -94,7 +96,7 @@
             <div class="zhlogin_icon"></div>
           </div>
         </div>
-        <div class="login_header1 cl" style="display:none">
+        <div class="login_header1 cl" style="display: none">
           <div class="dxlogin1 left"></div>
           <div class="zhlogin right" onclick="changedxlogin()">
             <div>短信登录</div>
@@ -134,7 +136,7 @@
             </div>
           </div>
         </div>
-        <div class="zhInputDiv" style="display:none">
+        <div class="zhInputDiv" style="display: none">
           <div class="iphonenum">
             <div class="left iphonenum_label">平台账号</div>
             <div class="left iphonenum_input1">
@@ -180,26 +182,13 @@
     </div>
 
     <!-- 注册 -->
-    <div id="registered" style="display:none">
-      <div class="registered">
+    <div id="registered" style="display: none" onclick="closeregistered()">
+      <div class="registered" onclick="evenregistered()">
         <div class="registered_header cl">
           <div>
             <img src="../image/注册@2x.png" alt="" />
           </div>
         </div>
-        <!-- <div class="registered_header1 cl">
-                <div class="dxlogin1 left">
-    
-                </div>
-                <div class="zhlogin right">
-                    <div>
-                        短信登录
-                    </div>
-                    <div class="zhlogin_icon">
-    
-                    </div>
-                </div>
-            </div> -->
         <div class="login_gang"></div>
         <div class="dxInputDiv_registered">
           <div class="iphonenum">
@@ -309,7 +298,29 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      tokenflag: false,
+    };
+  },
+  methods: {
+    showtoken() {
+      let token = localStorage.getItem("token");
+      if (token != null) {
+        let user_info = JSON.parse(localStorage.getItem("user_info"));
+        this.tokenflag = true;
+        this.user_info = user_info;
+      } else {
+        this.tokenflag = false;
+      }
+      console.log(token != null, this.tokenflag);
+    },
+  },
+  created() {
+    this.showtoken();
+  },
+};
 </script>
 
 <style lang="less">
