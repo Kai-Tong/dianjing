@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       "/live": {
-        target: "http://dev.6789zbz.com",
+        target: "http://dev.qubodianjing.com",
         pathRewrite: {
           '^/live': ''
         },
@@ -52,7 +52,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/front/',
+    assetsPublicPath: '/user/',
 
     /**
      * Source Maps

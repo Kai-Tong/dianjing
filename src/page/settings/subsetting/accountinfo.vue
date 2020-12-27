@@ -89,7 +89,10 @@ export default {
             console.log(file);
             this.$store.commit("upic", res.params.user_pic);
             this.infoList.user_pic = res.params.user_pic;
-            localStorage.setItem('user_pic',res.params.user_pic); 
+            // localStorage.setItem('user_pic',res.params.user_pic);
+            let user_info = JSON.parse(localStorage.getItem('user_info'))
+             user_info.user_pic = res.params.user_pic;
+             localStorage.setItem("user_info", JSON.stringify(user_info));
             if (res.code == 1) {
                   this.$message({
                     type: 'error', // warning、success
@@ -129,7 +132,7 @@ export default {
             this.$api.getbasicInfo.getbasic(
 
             ).then(res => {
-                // console.log(res);
+                console.log(res);
                 if (res.data.code == 1) {
                     this.$message({
                         type: 'error', // warning、success

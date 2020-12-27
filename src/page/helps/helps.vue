@@ -1,6 +1,6 @@
 <template>
   <div>
-    <homeheader />
+    <headerlogin />
     <div class="home_top">
         <div class="content">
             <div class="title_tag">
@@ -82,13 +82,13 @@
   </div>
 </template>
 <script>
-const homeheader = () => import("../../components/home/homeheader");
+const headerlogin = () => import("@/components/header/header");
 const Footer = () => import("../../components/footer/footer");
 import Clipboard from 'clipboard';
 export default {
   name: "Person",
   components: {
-    homeheader,
+    headerlogin,
     Footer
   },
   data() {

@@ -150,7 +150,7 @@
     var iphonetest = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
     var nametest = /[A-Za-z0-9\D]{3,20}/;
     var pwdtest = /[A-Za-z0-9\D]{6,16}/;
-    var url = 'http://dev.6789zbz.com/apiv2/user_reg'
+    var url = 'http://dev.qubodianjing.com/apiv2/user_reg'
     if (nametest.test(name)) {
       if (pwdtest.test(pwd)) {
         if (pwd2 == pwd) {
@@ -205,7 +205,7 @@
     var iphonetest =
       /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
     if (iphonetest.test(iphonenum)) {
-      var url = "http://dev.6789zbz.com/apiv2/user_sent_mms/" + iphonenum + '/0'
+      var url = "http://dev.qubodianjing.com/apiv2/user_sent_mms/" + iphonenum + '/0'
       $.ajax({
         url,
         context: document.body,
@@ -219,7 +219,7 @@
 
   function base(token) {
     $.ajax({
-      url: `http://dev.6789zbz.com/apiv2/user/base`,
+      url: `http://dev.qubodianjing.com/apiv2/user/base`,
       type: "get",
       context: document.body,
       headers: {
@@ -244,7 +244,7 @@
       if (iphonetest.test(iphonenum)) {
         var vcode = $('#vccode_dx').val()
         $.ajax({
-          url: "http://dev.6789zbz.com/apiv2/user_login",
+          url: "http://dev.qubodianjing.com/apiv2/user_login",
           type: 'get',
           context: document.body,
           data: {
@@ -274,7 +274,7 @@
     }
     if (pwd != false) {
       $.ajax({
-        url: "http://dev.6789zbz.com/apiv2/user_login",
+        url: "http://dev.qubodianjing.com/apiv2/user_login",
         type: 'get',
         context: document.body,
         data: {
@@ -311,7 +311,7 @@
     var iphonenum = $("#iphonenum_input_login").val()
     var iphonetest = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
     if (iphonetest.test(iphonenum)) {
-      var url = "http://dev.6789zbz.com/apiv2/user_sent_mms/" + iphonenum + '/1'
+      var url = "http://dev.qubodianjing.com/apiv2/user_sent_mms/" + iphonenum + '/1'
       $.ajax({
         url,
         context: document.body,

@@ -67,7 +67,7 @@ const errorHandler = (status, other) => {
     }
 }
 //其他请求携带token
-axios.defaults.headers.common['token'] = initStore.state.token;
+axios.defaults.headers.common['token'] = localStorage.getItem('token');
 axios.interceptors.request.use(
     config => {
             config.headers.client = 'web';
@@ -86,11 +86,12 @@ axios.interceptors.response.use(res => {
     if(res.status == 200){
         if(res.data.code == -1){
             //清除token
-            localStorage.setItem('nick_name','');
-            localStorage.setItem('user_name','');
+            // console.log(res);
+            // localStorage.setItem('nick_name','');
+            // localStorage.setItem('user_name','');
             localStorage.setItem('user_pic','');
             localStorage.setItem("token",'');
-            initStore.commit("token", ""); 
+            // initStore.commit("token", ""); 
         }
     }
     return res
@@ -118,7 +119,7 @@ instance.interceptors.request.use(function(config) {
     }
     // console.log(initStore.state.token);
     config.headers.client = 'web';
-    config.headers.token = initStore.state.token;
+    config.headers.token = localStorage.getItem('token')
     const options = {
         headers:{
            ' Cache-Control' : "no-cache"
@@ -149,7 +150,7 @@ instance.interceptors.response.use(
                 localStorage.setItem('nick_name','')
                 localStorage.setItem('user_name','')
                 localStorage.setItem('user_pic','')
-                initStore.commit("token", "");
+                // initStore.commit("token", "");
                 // initStore.state.token = ""
                 // console.log(initStore.state.token);            
             }

@@ -9,11 +9,11 @@
         </div>
         <div class="header_nav">
           <div class="navfenge"></div>
-          <a href="">
+          <a href="http://dev.qubodianjing.com/">
             <div class="header_home"></div>
           </a>
           <div class="navfenge"></div>
-          <a href="">
+          <a href="http://dev.qubodianjing.com/live">
             <div class="Schedule"></div>
           </a>
           <div class="navfenge"></div>
@@ -66,10 +66,10 @@
             <div class="login_exit" onclick="loginexit()">退出</div>
           </div>
           <div class="header_showsuer">
-            <div class=""><a href="">个人主页</a></div>
-            <div class=""><a href="">设置</a></div>
-            <div class=""><a href="">我的帖子</a></div>
-            <div class=""><a href="">帮助</a></div>
+            <div class="" @click="toperson">个人主页</div>
+            <div class="" @click="tosettings">设置</div>
+            <div class=""  @click="topost">我的帖子</div>
+            <div class="" @click="tohelp">帮助</div>
           </div>
         </div>
         <div class="navfenge"></div>
@@ -316,6 +316,24 @@ export default {
       }
       console.log(token != null, this.tokenflag);
     },
+    toperson(){
+      this.$router.push({
+          name: "person",
+          params: { user_uid: localStorage.getItem('user_uid') }
+      });
+    },
+    tosettings(){
+      this.$router.push('/settings')
+    },
+    topost(){
+      this.$router.push({
+          name: "article",
+          params: { user_uid: localStorage.getItem('user_uid') }
+      });
+    },
+    tohelp(){
+      this.$router.push('/helps')
+    }
   },
   created() {
     this.showtoken();

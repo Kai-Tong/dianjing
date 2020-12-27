@@ -76,7 +76,8 @@ router.beforeEach((to, from, next) => {
         message: "请先登录再进行操作"
       })
       // next({
-      //     path: "/"
+          // path: "/"
+          // window.location.href = "http://dev.qubodianjing.com/"
       // })
     }
   } else {

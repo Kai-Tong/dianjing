@@ -8,11 +8,11 @@
                 </div>
                 <div class="header_nav">
                     <div class="navfenge"></div>
-                    <a href="">
+                    <a href="http://dev.qubodianjing.com/">
                         <div class="header_home"></div>
                     </a>
                     <div class="navfenge"></div>
-                    <a href="">
+                    <a href="http://dev.qubodianjing.com/live">
                         <div class="Schedule"></div>
                     </a>
                     <div class="navfenge"></div>
@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 export default {
     name:'',
     data(){
@@ -105,8 +106,8 @@ export default {
                 src: "/helps",
                 },
             ],
-            upic:require("../../image/22@2x.png"),
-            uname:'12345'
+            // upic:JSON.parse(localStorage.getItem('user_info')).user_pic,
+            uname:JSON.parse(localStorage.getItem('user_info')).user_name
         }
     },
     methods:{
@@ -155,8 +156,11 @@ export default {
             });
         },
     },
+    computed: {
+        ...mapState(["upic"]),
+    },
     mounted(){
-        // console.log(this.$router.params.user_uid);
+        this.$store.commit("upic", JSON.parse(localStorage.getItem('user_info')).user_pic);
     }
 }
 </script>

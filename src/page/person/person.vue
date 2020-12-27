@@ -16,7 +16,7 @@
                 <div class="person_username">{{profile.user_name}}</div>
                 <div class="person_link">
                   <span>de个人主页</span>
-                  http://localhost:8080/front/person/homeperson/{{uid}}
+                  http://dev.qubodianjing.com/user/person/homeperson/{{uid}}
                   <button class="tag-read" :data-clipboard-text="person_src" @click="copy">
                     <i class="el-icon-copy-document copy"></i>
                   </button>
@@ -259,7 +259,7 @@ export default {
         if (to.name === 'homeperson') {
           this.getInfo();
           this.uid = this.$route.params.user_uid    // 在此调用函数
-          this.person_src = "http://localhost:8080/front/person/homeperson/" + this.$route.params.user_uid;
+          this.person_src = "http://dev.qubodianjing.com/user/person/homeperson/" + this.$route.params.user_uid;
           if(this.$route.params.user_uid == localStorage.getItem("user_uid")){
               this.isme = true
           }else{

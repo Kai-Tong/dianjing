@@ -36,14 +36,14 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  base: '/front/',
+  base: '/user/',
   routes: [
     {
-      path: '/search',
+      path: '/',
       name: 'Search',
-      meta: {
-        requireAuth: true
-      },
+      // meta: {
+      //   requireAuth: true
+      // },
       component: () => Search
     },
     {
