@@ -37,7 +37,6 @@
 </template>
 
 <script>
-const home_herder = () => import("@/components/home/home_herder");
 const homeheader = () => import("@/components/home/homeheader");
 const Footer = () => import("@/components/footer/footer");
 const changename = () => import("./changename");
@@ -47,7 +46,6 @@ const changepass = () => import("./changepass");
 const authentication = () => import("./authentication");
 export default {
   components: {
-    home_herder,
     homeheader,
     changename,
     changephone,
@@ -60,9 +58,6 @@ export default {
     return {
       // iscomponent:"",
       routeAddress: "",
-      component_name: "home_content",
-      menu_num: "1",
-      headerKey: "1",
       changename: changename,
       changephone: changephone,
       changemail: changemail,
@@ -130,9 +125,6 @@ export default {
     },
   },
   methods: {
-    parentEvent(data) {
-      this.menu_num = data;
-    },
     backSet(value) {
       this.$router.push({ name: "settings", params: { name: value } });
     },

@@ -21,7 +21,8 @@
                     </a>
                     <div class="navfenge"></div>
                     <a href="">
-                        <div class="header_forum"></div>
+                        <div class="header_forum1" v-if="this.$route.path == '/attentionset'"></div>
+                        <div class="header_forum" v-else></div>
                     </a>
                     <div class="navfenge"></div>
                 </div>
@@ -261,6 +262,10 @@ export default {
 
 .header_forum1 {
     background-image: url('../../image/论坛2@2x.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 125px;
+    height: 73px;
 }
 
 .navfenge {

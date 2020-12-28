@@ -237,9 +237,9 @@ export default {
   border: 1px solid #435280;
 }
 /deep/.el-button {
-  color: #818382;
-  background-color: #0D1219;
-  border: 1px solid #818382;
+  color: #818382 !important;
+  background-color: #0D1219 !important;
+  border: 1px solid #818382 !important;
 }
 /deep/.el-button:hover{
   color: #7c705f;

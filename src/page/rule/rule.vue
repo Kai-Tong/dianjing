@@ -2,8 +2,8 @@
   <div id="home">
     <div class="public cl">
       <div class="info_set">
-        <div class="line"></div>
-        <p class="p_title">6789直播条款</p>
+        <div class="line">平台用户协议</div>
+        <p class="p_title">平台用户协议</p>
         <el-button class="backbtn" @click="goback()">返回</el-button>
         <div class="text">
           <h4>
@@ -360,7 +360,7 @@ const Footer = () => import("../../components/footer/footer");
 export default {
   methods: {
     goback() {
-      this.$router.push("/");
+      window.location.href = "http://dev.qubodianjing.com/"
     },
   },
   components: {
@@ -370,19 +370,24 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#app{
+  margin-top:0;
+}
 #home {
   width: 100%;
   height: 100%;
-  // background-image: url("../../image/bj.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background-image: url("../../image/bg@2x.png");
+  background-size: 100% 100%;
   position: fixed;
   top: 0;
   left: 0;
   overflow: scroll;
   .public {
     width: 100%;
-    position: relative;
+    // height: 100%;
+    background: url('../../image/home_top.png') no-repeat;
+    background-size: 100% 817px;
+    // position: relative;
     margin-bottom: 40px;
     .info_set {
       width: 1273px;
@@ -398,17 +403,16 @@ export default {
       box-sizing: border-box;
       .line {
         width: 200px;
-        height: 2px;
+        height: 50px;
         margin: auto;
         margin-top: 20px;
         margin-bottom: 10px;
-        background-color: #309cfb;
         box-sizing: border-box;
       }
       .p_title {
         margin-left: 46px;
-        border-left: 5px solid #014681;
-        color: #014681;
+        border-left: 5px solid #1d1e1f;
+        color: #1d1e1f;
         font-size: 18px;
         height: 20px;
         line-height: 20px;

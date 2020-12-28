@@ -247,7 +247,6 @@ export default {
   mounted(){
     this.getInfo();
     console.log(this.$route.params.user_uid);
-    console.log(this.$route.query.user_uid);
     if(this.$route.params.user_uid == localStorage.getItem("user_uid")){
         this.isme = true
     }else{
@@ -256,8 +255,10 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-        if (to.name === 'homeperson') {
-          this.getInfo();
+      this.getInfo();
+      console.log(this.$route.params.user_uid);
+        // if (to.name === 'homeperson') {
+          // this.getInfo();
           this.uid = this.$route.params.user_uid    // 在此调用函数
           this.person_src = "http://dev.qubodianjing.com/user/person/homeperson/" + this.$route.params.user_uid;
           if(this.$route.params.user_uid == localStorage.getItem("user_uid")){
@@ -267,7 +268,7 @@ export default {
           }
           console.log(this.isme);
         }
-      }
+      // }
   }
 };
 </script>
