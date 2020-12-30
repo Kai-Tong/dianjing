@@ -77,7 +77,7 @@ router.beforeEach((to, from, next) => {
       })
       // next({
           // path: "/"
-          // window.location.href = "http://dev.qubodianjing.com/"
+          window.location.href = "http://dev.qubodianjing.com/"
       // })
     }
   } else {
