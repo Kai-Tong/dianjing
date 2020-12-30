@@ -16,11 +16,11 @@
                         <div class="Schedule"></div>
                     </a>
                     <div class="navfenge"></div>
-                    <a href="">
+                    <a href="http://dev.qubodianjing.com/news">
                         <div class="advisory"></div>
                     </a>
                     <div class="navfenge"></div>
-                    <a href="">
+                    <a href="http://dev.qubodianjing.com/forum">
                         <div class="header_forum1" v-if="this.$route.path == '/attentionset'"></div>
                         <div class="header_forum" v-else></div>
                     </a>

@@ -17,11 +17,11 @@
             <div class="Schedule"></div>
           </a>
           <div class="navfenge"></div>
-          <a href="">
+          <a href="http://dev.qubodianjing.com/news">
             <div class="advisory"></div>
           </a>
           <div class="navfenge"></div>
-          <a href="">
+          <a href="http://dev.qubodianjing.com/forum">
             <div class="header_forum"></div>
           </a>
           <div class="navfenge"></div>
