@@ -79,7 +79,7 @@
                     <div class="headercollection_img">
     
                     </div>
-                    <div class="headercollection_text">
+                    <div class="headercollection_text" @click="collectip">
                         收藏
                     </div>
                 </div>
@@ -140,12 +140,12 @@ export default {
                 type: "success", // warning、success
                 message: "登出成功！",
                 });
-                this.$store.commit("token", "");
-                localStorage.setItem("token", "");
+                // this.$store.commit("token", "");
                 localStorage.setItem("user_name", "");
-                localStorage.setItem("nick_name", "");
                 localStorage.setItem("user_uid", "");
                 localStorage.setItem("user_pic", "");
+                localStorage.removeItem('token')
+                localStorage.removeItem('user_info')
                 this.$router.push("/");
             } else if (res.data.code == -1) {
                 this.$router.push("/");
@@ -156,6 +156,13 @@ export default {
             this.$message("参数错误");
             });
         },
+        collectip(){
+            this.$message({
+            offset:300,
+            showClose: true,
+            message: "您的浏览器不支持,请按 Ctrl+D 手动收藏!",
+            });
+        }
     },
     computed: {
         ...mapState(["upic"]),

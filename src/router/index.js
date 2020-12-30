@@ -39,7 +39,7 @@ export default new Router({
   base: '/user/',
   routes: [
     {
-      path: '/',
+      path: '/search',
       name: 'Search',
       // meta: {
       //   requireAuth: true
