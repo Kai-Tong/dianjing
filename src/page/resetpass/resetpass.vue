@@ -391,7 +391,7 @@ export default {
                   type: "success", // warning、success
                   message: "重置成功！",
                 });
-                this.$router.push("/");
+                window.location.href = this.JuheHOST
                 // this.active = this.active+1;
                 this.$refs[formName].resetFields();
               } else if (res.data.code == -1) {
@@ -399,7 +399,7 @@ export default {
                   type: "warning", // warning、success
                   message: res.data.msg,
                 });
-                this.$router.push("/");
+                window.location.href = this.JuheHOST
               }
             })
             .catch((error) => {

@@ -101,7 +101,7 @@ export default {
                             type: 'success', // warning、success
                             message: res.data.msg 
                         })
-                        this.$router.push("/") 
+                        window.location.href = this.JuheHOST
                     }
             })
             .catch(error => {
@@ -128,7 +128,7 @@ export default {
                         type: 'success', // warning、success
                         message: res.data.msg 
                     })
-                    this.$router.push("/") 
+                    window.location.href = this.JuheHOST
                 }
             })
             .catch(error => {
@@ -167,7 +167,7 @@ export default {
                     //     type: 'success', // warning、success
                     //     message: res.data.msg 
                     // })
-                    // this.$router.push("/") 
+                    window.location.href = this.JuheHOST
                 }
             })
             .catch(error => {

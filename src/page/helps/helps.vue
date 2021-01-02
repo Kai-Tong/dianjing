@@ -8,23 +8,23 @@
             </div>
             <div class="question">
               <el-collapse v-model="activeNames" @change="handleChange">
-                <el-collapse-item name="1">
+                <!-- <el-collapse-item name="1">
                   <template slot="title">
                     热门问题<img style="width:23px;height:31px;margin-left:10px" src="../../image/imgs/hot.png" alt="">
                   </template>
                   <div class="question_title" @click="questionOne()"><img src="../../image/ic2x.png" alt="">账号无法登录？</div>
                   <div class="question_title" @click="questionTwo()"><img src="../../image/ic2x.png" alt="">忘记密码怎么办？</div>
                   <div class="question_title" @click="questionThree()"><img src="../../image/ic2x.png" alt="">收不到验证码？</div>
-                </el-collapse-item>
+                </el-collapse-item> -->
                 <el-collapse-item title="问题分类1" name="2">
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">账号无法登录？</div>
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">忘记密码怎么办？</div>
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">收不到验证码？</div>
+                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁的账号无法登录？</div>
+                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁忘记密码怎么办？</div>
+                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁收不到验证码？</div>
                 </el-collapse-item>
                 <el-collapse-item title="问题分类2" name="3">
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">账号无法登录？</div>
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">忘记密码怎么办？</div>
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">收不到验证码？</div>
+                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁的账号无法登录？</div>
+                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁忘记密码怎么办？</div>
+                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁收不到验证码？</div>
                 </el-collapse-item>
               </el-collapse>
               <div class="customer">
@@ -58,6 +58,16 @@
                 </div>
             </div>
             <div class="aboutus">
+              <el-collapse v-model="activeNames" @change="handleChange">
+                <el-collapse-item name="1">
+                  <template slot="title">
+                    热门问题<img style="width:23px;height:31px;margin-left:10px" src="../../image/imgs/hot.png" alt="">
+                  </template>
+                  <div class="question_title" @click="questionOne()"><img src="../../image/ic2x.png" alt="">账号无法登录？</div>
+                  <div class="question_title" @click="questionTwo()"><img src="../../image/ic2x.png" alt="">忘记密码怎么办？</div>
+                  <div class="question_title" @click="questionThree()"><img src="../../image/ic2x.png" alt="">收不到验证码？</div>
+                </el-collapse-item>
+              </el-collapse>
                 <div class="question1_title">关注我们</div>
                 <div class="netname">网站名称：仅为荣耀，一往无前</div>
                 <div class="netname">版本号：v.11</div>
@@ -102,6 +112,7 @@ export default {
   methods: {
     handleChange(val) {
       console.log(val);
+      
     },
     questionOne(){
       this.question1 = true
