@@ -33,7 +33,7 @@
                     <div class="headerseles_img">
     
                     </div>
-                    <input type="text">
+                    <input type="text" @focus="tosearch()">
                     <div class="header_search_img">
     
                     </div>
@@ -162,6 +162,9 @@ export default {
             showClose: true,
             message: "您的浏览器不支持,请按 Ctrl+D 手动收藏!",
             });
+        },
+        tosearch(){
+            this.$router.push('/search')
         }
     },
     computed: {
