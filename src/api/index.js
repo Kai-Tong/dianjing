@@ -33,6 +33,7 @@ import followfans from "./followfans"
 import publish from "./publish"
 import getformatechanel from "./getformatechanel"
 import report from "./report"
+import commentlist from "./commentlist"
 
 //导出接口
 export default {
@@ -97,5 +98,7 @@ export default {
     //级联选中
     getformatechanel,
     //举报
-    report
+    report,
+    //回贴列表
+    commentlist
 }

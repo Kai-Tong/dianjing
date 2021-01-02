@@ -123,7 +123,7 @@ export default {
                         type: 'warning', // warning、success
                         message: res.data.msg 
                     })
-                    this.$router.push("/")
+                    window.location.href = this.JuheHOST
                 }
             })
             .catch(error => {
@@ -172,7 +172,7 @@ export default {
                         type: 'success', // warning、success
                         message: '身份验证过期，请重新登录' 
                     })
-                    this.$router.push("/") 
+                    window.location.href = this.JuheHOST
                 }
             })
             .catch(error => {

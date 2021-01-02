@@ -102,7 +102,7 @@ export default {
     // 配置 onchange 回调函数，将数据同步到 vue 中
     editor.config.onchange = (newHtml) => {
       this.editorData = newHtml;
-      // console.log(this.editorData);
+      console.log(this.editorData);
     };
     //配置编辑器高度
     editor.config.height = 600;
@@ -250,6 +250,7 @@ export default {
         console.log(res);
         console.log(file);
         this.video_src = res.data[0];
+        // this.editor.txt.append(`'<video class="videosrc" src="${this.video_src}" controls="controls"></video>'`)       
         if (res.code == 1) {
             this.$message({
             type: 'error', // warning、success
@@ -280,46 +281,56 @@ export default {
     },
     getEditorData() {
       // 通过代码获取编辑器内容
-      if (this.articletitle && this.value[1]) {
-        let data = this.editor.txt.html();
-        this.$api.publish
-          .publishPost({
-            forum_title: this.$inHTMLData(this.articletitle),
-            channel: this.value[1],
-            body: data,
-          })
-          .then((res) => {
-            console.log(res);
-            if (res.data.code == 1) {
-              this.$message({
-                type: "error", // warning、success
-                message: res.data.msg,
-              });
-            } else if (res.data.code == 0) {
-              this.$message({
-                type: "success", // warning、success
-                message: "发布成功",
-              });
-              //清空编辑器
-              this.editor.txt.clear();
-              this.articletitle = "";
-            } else if (res.data.code == -1) {
-              this.$message({
-                type: "warning", // warning、success
-                message: res.data.msg,
-              });
-              this.$router.push("/");
-            }
-          })
-          .catch((error) => {
-            this.$message("未知错误");
+      if(this.video_src !== ''){
+        if (this.articletitle && this.value[1]) {
+          let data = this.editor.txt.html();
+          this.$api.publish
+            .publishPost({
+              forum_title: this.$inHTMLData(this.articletitle),
+              channel: this.value[1],
+              body: data,
+              video:this.video_src
+            })
+            .then((res) => {
+              console.log(res);
+              if (res.data.code == 1) {
+                this.$message({
+                  type: "error", // warning、success
+                  message: res.data.msg,
+                });
+              } else if (res.data.code == 0) {
+                this.$message({
+                  type: "success", // warning、success
+                  message: "发布成功",
+                });
+                //清空编辑器
+                this.editor.txt.clear();
+                this.articletitle = "";
+                this.video_src = ''
+              } else if (res.data.code == -1) {
+                this.$message({
+                  type: "warning", // warning、success
+                  message: res.data.msg,
+                });
+                window.location.href = this.JuheHOST
+              }
+            })
+            .catch((error) => {
+              this.$message("未知错误");
+            });
+        } else {
+          this.$message({
+            type: "warning", // warning、success
+            message: "频道和标题不能为空",
           });
-      } else {
+        }
+      }else{
         this.$message({
           type: "warning", // warning、success
-          message: "频道和标题不能为空",
+          message: "请先上传视频",
         });
       }
+      
     },
     topublish(){
         this.$router.push('/publish')
@@ -355,7 +366,7 @@ export default {
               type: "success", // warning、success
               message: "身份验证过期，请重新登录",
             });
-            this.$router.push("/");
+            window.location.href = this.JuheHOST
           }
         })
         .catch((error) => {

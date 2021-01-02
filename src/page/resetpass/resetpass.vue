@@ -1,6 +1,6 @@
 <template>
-  <div class="login" clearfix>
-    <homeheader></homeheader>
+  <div class="login1" clearfix>
+    <headerlogin></headerlogin>
     <div class="home_top">
       <div class="inset">
         <div class="step">
@@ -143,12 +143,12 @@
 
 <script>
 import { mapState } from "vuex";
-const homeheader = () => import("@/components/home/homeheader");
+const headerlogin = () => import("@/components/header/header");
 const Footer = () => import("../../components/footer/footer");
 export default {
   name: "login",
   components: {
-    homeheader,
+    headerlogin,
     Footer
   },
   data() {
@@ -391,7 +391,7 @@ export default {
                   type: "success", // warning、success
                   message: "重置成功！",
                 });
-                this.$router.push("/");
+                window.location.href = this.JuheHOST
                 // this.active = this.active+1;
                 this.$refs[formName].resetFields();
               } else if (res.data.code == -1) {
@@ -399,7 +399,7 @@ export default {
                   type: "warning", // warning、success
                   message: res.data.msg,
                 });
-                this.$router.push("/");
+                window.location.href = this.JuheHOST
               }
             })
             .catch((error) => {
@@ -424,9 +424,10 @@ export default {
 </script>
 
 <style scoped lang="less">
-.login {
+.login1 {
   width: 100%;
-  height: 100%;
+  // height: 100%;
+  // overflow: hidden;;
   .home_top {
     width: 100%;
     height: 817px;

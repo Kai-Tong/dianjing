@@ -146,9 +146,9 @@ export default {
                 localStorage.setItem("user_pic", "");
                 localStorage.removeItem('token')
                 localStorage.removeItem('user_info')
-                this.$router.push("/");
+                window.location.href = this.JuheHOST
             } else if (res.data.code == -1) {
-                this.$router.push("/");
+                window.location.href = this.JuheHOST
             }
             })
             .catch((error) => {

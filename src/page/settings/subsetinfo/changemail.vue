@@ -167,7 +167,7 @@ export default {
                         type: 'warning', // warning、success
                         message: res.data.msg 
                     })
-                    this.$router.push("/")
+                    window.location.href = this.JuheHOST
                 }
             })
             .catch(error => {
