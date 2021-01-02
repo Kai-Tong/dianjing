@@ -30,9 +30,7 @@
           <div class="headerseles">帖子</div>
           <div class="headerseles_img" onclick="showsearchList()"></div>
           <input type="text" />
-          <a href="">
-            <div class="header_search_img"></div>
-          </a>
+          <div class="header_search_img" @click="gotosearch()"></div>
           <div class="headerseles_more_div">
             <div class="headerseles_more" onclick="changesearchtype()">
               帖子
@@ -68,7 +66,7 @@
           <div class="header_showsuer">
             <div class="" @click="toperson">个人主页</div>
             <div class="" @click="tosettings">设置</div>
-            <div class=""  @click="topost">我的帖子</div>
+            <div class="" @click="topost">我的帖子</div>
             <div class="" @click="tohelp">帮助</div>
           </div>
         </div>
@@ -316,24 +314,27 @@ export default {
       }
       console.log(token != null, this.tokenflag);
     },
-    toperson(){
+    gotosearch() {
+      this.$router.push("/search");
+    },
+    toperson() {
       this.$router.push({
-          name: "person",
-          params: { user_uid: localStorage.getItem('user_uid') }
+        name: "person",
+        params: { user_uid: localStorage.getItem("user_uid") },
       });
     },
-    tosettings(){
-      this.$router.push('/settings')
+    tosettings() {
+      this.$router.push("/settings");
     },
-    topost(){
+    topost() {
       this.$router.push({
-          name: "article",
-          params: { user_uid: localStorage.getItem('user_uid') }
+        name: "article",
+        params: { user_uid: localStorage.getItem("user_uid") },
       });
     },
-    tohelp(){
-      this.$router.push('/helps')
-    }
+    tohelp() {
+      this.$router.push("/helps");
+    },
   },
   created() {
     this.showtoken();
