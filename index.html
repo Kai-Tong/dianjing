@@ -103,7 +103,22 @@
     }
 
   }
-
+  function base(token) {
+        $.ajax({
+            url: `http://dev.qubodianjing.com/apiv2/user/base`,
+            type: "get",
+            context: document.body,
+            headers: {
+                // 'Content-Type': 'application/json;charset=utf8',
+                token: token,
+            },
+            success: function (data) {
+                console.log(data.params)
+                localStorage.setItem("baseParams", JSON.stringify(data.params));
+                localStorage.setItem("user_uid", JSON.stringify(data.params.user_uid));
+            }
+        })
+    }
   function loginexit() {
     localStorage.removeItem('token')
     localStorage.removeItem('user_info')
@@ -181,6 +196,7 @@
                   $('.registered').hide();
                   istoken()
                   toast(msg)
+                  base(token)
                 } else {
                   toast(msg)
                 }
