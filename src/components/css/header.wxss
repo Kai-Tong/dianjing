@@ -5,6 +5,7 @@
   background-image: url('../image/header-bg@2x.png');
   background-size: 100%;
   background-repeat: no-repeat;
+  z-index: 100;
 }
 .header_box {
   display: flex;
