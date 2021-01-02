@@ -1,6 +1,6 @@
 <template>
     <div class="attention">
-        <div class="attention_nav">
+        <!-- <div class="attention_nav">
             <div class="nav_c">按类型查看：</div>
             <ul>
                 <li v-for="item in attention_nav" 
@@ -9,7 +9,7 @@
                     @click="selected(item.name)"
                 >{{item.name}}</li>
             </ul>
-        </div>
+        </div> -->
         <div class="attention_list" v-if="user_head">
             <div class="attenhead" v-for="(item,index) in attentionData" :key="index">
                     <img :src="item.user_pic" alt="" @click="goPerson(item.id)">
@@ -17,7 +17,7 @@
                     <el-button class="attenbtn" size="mini" @click="cancleAttention(item.id)" v-if="isme">取消关注</el-button>
             </div>
         </div>
-        <div class="article_info" v-for="(item,index) in articleList" :key="index">
+        <!-- <div class="article_info" v-for="(item,index) in articleList" :key="index">
             <div class="article_info_title">
                 <img class="bisai_list_tag" src="../../../image/ic2x.png" alt="">
                 <p class="article_title">{{item.forum_title}}</p>
@@ -31,7 +31,7 @@
             <div class="article_img">
                 <img :src="imgsrc" alt="" v-for="(imgsrc,index) in item.imgList" :key="index">
             </div>
-        </div>
+        </div> -->
         <div class="noarticle" v-if="attentionData.length == 0">
             暂未关注
         </div>

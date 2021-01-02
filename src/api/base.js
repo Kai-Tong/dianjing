@@ -58,6 +58,8 @@ const base = {
   getformatechanel: `${host}/apiv2/get_format_channel`,
   //我的主页,我的帖子
   myprofile: `${host}/apiv2/user/profile`,
+  //回贴列表
+  commentlist: `${host}/apiv2/user/forum/comment`,
   //我的粉丝，关注
   followfans: `${host}/apiv2/user/follow_fans`,
   //举报

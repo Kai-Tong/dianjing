@@ -2,19 +2,19 @@
     <div class="person_basic">
         <div class="person_material">
             <!-- <span @click="See()">360全景看房</span> -->
-            <div>发帖：125</div>
-            <div>回帖：125</div>
-            <div>粉丝：125</div>
+            <div>发帖：{{postnum}}</div>
+            <div>关注：{{profile.user_follow_num}}</div>
+            <div>粉丝：{{profile.user_fans_num}}</div>
         </div>
         <div class="active_state">
             <div class="active_state_title"><img class="bisai_list_tag" src="../../../image/ic2x.png" alt=""><span>活跃概况：</span></div>
             <div class="active_state_left">
-                <p>注册时间：</p>
-                <p>注册IP：</p>
+                <p>注册时间：{{profile.user_logintime}}</p>
+                <p>注册IP：{{profile.user_reg_ip}}</p>
             </div>
             <div class="active_state_right">
-                <p>最后访问时间：</p>
-                <p>最后访问IP：</p>
+                <p>最后访问时间：{{nowdate}}</p>
+                <p>最后访问IP：{{profile.user_login_ip}}</p>
             </div>
         </div>
         <div class="person_info">
@@ -41,6 +41,8 @@ export default {
             articleList: [],
             reverse:true,
             profile:{},
+            postnum:'',
+            nowdate:''
         }
     },
     methods:{
@@ -58,6 +60,28 @@ export default {
             d = d < 10 ? ('0' + d) : d
             const time = y + '-' + m + '-' + d
             return time
+        },
+        //时间戳转换
+        //时间转换
+        dateFormat2(date) {
+            var date = new Date(date * 1000);
+            var Y = date.getFullYear() + '-';
+            var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+            var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+            var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+            var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+            var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+            return Y + M + D + h + m + s;
+        },
+        dateFormat3() {
+            var date = new Date();
+            var Y = date.getFullYear() + '-';
+            var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+            var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+            var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+            var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+            var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+            return Y + M + D + h + m + s;
         },
         //星座函数
         getAstro(strBirthday){
@@ -90,7 +114,9 @@ export default {
                         message: res.data.msg 
                     })
                 } else if (res.data.code == 0) {
+                    res.data.params.profile.user_logintime = this.dateFormat2(res.data.params.profile.user_logintime)
                     this.profile = res.data.params.profile;
+                    this.postnum = res.data.params.pagination.total;
                 } else if (res.data.code == -1) {
                     this.$message({
                         type: 'success', // warning、success
@@ -115,6 +141,7 @@ export default {
     mounted(){
         this.getInfo()
         console.log(this.$route.params.user_uid);
+        this.nowdate = this.dateFormat3();
         // this.$router.go(0)
     }
 }
