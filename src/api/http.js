@@ -91,6 +91,7 @@ axios.interceptors.response.use(res => {
             // localStorage.setItem('user_name','');
             localStorage.setItem('user_pic','');
             localStorage.setItem("token",'');
+            localStorage.removeItem('user_info')
             // initStore.commit("token", ""); 
         }
     }
@@ -150,6 +151,7 @@ instance.interceptors.response.use(
                 localStorage.setItem('nick_name','')
                 localStorage.setItem('user_name','')
                 localStorage.setItem('user_pic','')
+                localStorage.removeItem('user_info')
                 // initStore.commit("token", "");
                 // initStore.state.token = ""
                 // console.log(initStore.state.token);            
