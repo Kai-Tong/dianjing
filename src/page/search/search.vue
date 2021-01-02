@@ -5,7 +5,7 @@
       <div class="no1searchheader">搜索结果</div>
       <div class="keywords_div cl">
         <div class="left">关键词：</div>
-        <input type="text" class="keywords_input left" v-model="keywords" />
+        <input type="text" class="keywords_input left" v-model="keywords"  @keyup.enter="changeoption()" />
         <div class="no1searchbtn left cl" @click="changeoption()">
           <div class="left"></div>
           搜索
@@ -127,7 +127,7 @@
                 @click="goPerson(item.id)"
               />
             </div>
-            <div class="user left">{{ item.user_nickname }}</div>
+            <div class="user left" @click="goPerson(item.id)">{{ item.user_nickname }}</div>
             <div class="user left guanzhu cu" @click="attention(item)">
               {{ item.is_followed == 0 ? "关注" : "已关注" }}
             </div>
@@ -169,7 +169,7 @@ export default {
         },
         {
           id: 2,
-          name: "话题",
+          name: "圈子",
         },
         {
           id: 3,
