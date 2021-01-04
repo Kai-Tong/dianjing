@@ -2,7 +2,7 @@
     <div class="article cl">
         <el-button class="publish" type="primary" icon="el-icon-edit" @click="toPublish">发帖</el-button>
         <div class="article_box">
-            <div class="article_info" v-for="(item,index) in articleList" :key="index">
+            <div class="article_info" v-for="(item,index) in articleList" :key="index" @click="toPostDetail(item)">
                 <div class="article_info_title">
                     <img class="bisai_list_tag" src="../../../image/ic2x.png" alt="">
                     <p class="article_title">{{item.forum_title}}</p>
@@ -60,6 +60,10 @@ export default {
         }
     },
     methods:{
+        toPostDetail(item){
+            // console.log(this.JuheHOST+ '/forum/' + item.ch_columnm_key + '/' + item.ch_key + '/' + item.id + '.html');
+            window.location.href = this.JuheHOST+ '/forum/' + item.ch_columnm_key + '/' + item.ch_key + '/' + item.id + '.html'
+        },
          toPublish(){
              this.$router.push('/publish')
          },
