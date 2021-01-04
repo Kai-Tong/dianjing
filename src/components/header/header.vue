@@ -27,9 +27,9 @@
           <div class="navfenge"></div>
         </div>
         <div class="header_search">
-          <div class="headerseles">帖子</div>
+          <div class="headerseles">资讯</div>
           <div class="headerseles_img" onclick="showsearchList()"></div>
-          <input type="text" />
+          <input type="text" id="headersearch" />
           <div class="header_search_img" @click="gotosearch()"></div>
           <div class="headerseles_more_div">
             <div class="headerseles_more" onclick="changesearchtype()">

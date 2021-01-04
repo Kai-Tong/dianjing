@@ -55,11 +55,30 @@
   function evenregistered() {
     event.stopPropagation();
   }
+  $("#headersearch").on('input', function () {
+    console.log($("#headersearch").val())
+    localStorage.setItem("searchinputs", $("#headersearch").val())
+  })
 
   function changesearchtype() {
-    console.log(event.target.innerHTML)
     $(".headerseles").text(event.target.innerHTML)
-    $('.headerseles_more_div').hide()
+    $('.headerseles_more_div').hide();
+    let type = 1
+    switch (event.target.innerHTML) {
+      case "资讯":
+        type = 1
+        break;
+      case "帖子":
+        type = 2
+        break;
+      case "用户":
+        type = 3
+        break;
+      default:
+        type = 1
+        break;
+    }
+    localStorage.setItem("searchtype", type)
   }
   //搜索栏目显示隐藏
   var headerseles_more_flag = false
@@ -103,22 +122,24 @@
     }
 
   }
+
   function base(token) {
-        $.ajax({
-            url: `http://dev.qubodianjing.com/apiv2/user/base`,
-            type: "get",
-            context: document.body,
-            headers: {
-                // 'Content-Type': 'application/json;charset=utf8',
-                token: token,
-            },
-            success: function (data) {
-                console.log(data.params)
-                localStorage.setItem("baseParams", JSON.stringify(data.params));
-                localStorage.setItem("user_uid", JSON.stringify(data.params.user_uid));
-            }
-        })
-    }
+    $.ajax({
+      url: `http://dev.qubodianjing.com/apiv2/user/base`,
+      type: "get",
+      context: document.body,
+      headers: {
+        // 'Content-Type': 'application/json;charset=utf8',
+        token: token,
+      },
+      success: function (data) {
+        console.log(data.params)
+        localStorage.setItem("baseParams", JSON.stringify(data.params));
+        localStorage.setItem("user_uid", JSON.stringify(data.params.user_uid));
+      }
+    })
+  }
+
   function loginexit() {
     localStorage.removeItem('token')
     localStorage.removeItem('user_info')
