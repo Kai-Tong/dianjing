@@ -26,16 +26,44 @@
                     </a>
                     <div class="navfenge"></div>
                 </div>
-                <div class="header_search">
+                <!-- <div class="header_search">
                     <div class="headerseles">
                         贴子
                     </div>
-                    <div class="headerseles_img">
+                    <div class="headerseles_img" onclick="showsearchList()">
     
                     </div>
                     <input type="text" @focus="tosearch()">
                     <div class="header_search_img">
     
+                    </div>
+                    <div class="headerseles_more_div">
+                        <div class="headerseles_more" onclick="changesearchtype()">
+                        帖子
+                        </div>
+                        <div class="headerseles_more" onclick="changesearchtype()">
+                        用户
+                        </div>
+                        <div class="headerseles_more" onclick="changesearchtype()">
+                        资讯
+                        </div>
+                    </div>
+                </div> -->
+                <div class="header_search">
+                    <div class="headerseles">帖子</div>
+                    <div class="headerseles_img" onclick="showsearchList()"></div>
+                    <input type="text" />
+                    <div class="header_search_img" @click="gotosearch()"></div>
+                    <div class="headerseles_more_div">
+                        <div class="headerseles_more" onclick="changesearchtype()">
+                        帖子
+                        </div>
+                        <div class="headerseles_more" onclick="changesearchtype()">
+                        用户
+                        </div>
+                        <div class="headerseles_more" onclick="changesearchtype()">
+                        资讯
+                        </div>
                     </div>
                 </div>
                 <div class="headerlogin_div">
@@ -93,6 +121,7 @@ export default {
     name:'',
     data(){
         return{
+            selected:false,
             menuitem: [
                 {
                 title: "账号设置",
@@ -112,6 +141,9 @@ export default {
         }
     },
     methods:{
+        gotosearch() {
+            this.$router.push("/search");
+        },
         gotosm(src) {
             console.log(src);
             let uid = localStorage.getItem("user_uid")
@@ -164,7 +196,7 @@ export default {
             });
         },
         tosearch(){
-            this.$router.push('/search')
+            // this.$router.push('/search')
         }
     },
     computed: {
@@ -470,6 +502,27 @@ export default {
 .el-dropdown-menu__item:not(.is-disabled):hover{
       background: rgba(0,0,0,.5) !important;
       color: #f0d38f !important;
+}
+.headerseles_more_div{
+    position: absolute;
+    display: none;
+    left: 30px;
+    top: 30px;
+    /* bottom: 50px; */
+    background-image: linear-gradient(#1e1e23, #1e1e23), linear-gradient(#f0d38f, #f0d38f);  
+}
+.headerseles_more{
+    color: #fff;
+    font-size: 14px;
+    width: 0.3px * 200;
+    text-align: center;
+}
+.headerseles:hover {
+    color: #fdfdfd;
+}
+.headerseles_more:hover{
+    color: #fdfdfd;
+    cursor: pointer;
 }
 </style>
 <style>

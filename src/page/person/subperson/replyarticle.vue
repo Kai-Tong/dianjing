@@ -1,6 +1,6 @@
 <template>
   <div class="replyarticle">
-      <div class="replyarticle_con" v-for="(item,index) in commentlist" :key="index">
+      <div class="replyarticle_con" v-for="(item,index) in commentlist" :key="index" @click="toPostDetail(item)">
           <div class="replyarticle_con_head"><div>{{item.c_addtime}}</div><div><img src="../../../image/like.png" alt="">{{item.c_good_count	}}</div></div>
           <div class="my_com">{{item.c_body}}</div>
           <!-- <div class="my_com_reply">
@@ -23,6 +23,9 @@ export default {
         }
     },
     methods:{
+        toPostDetail(item){
+            window.location.href = this.JuheHOST+ '/forum/' + item.ch_columnm_key + '/' + item.ch_key + '/' + item.forum_id + '.html'
+        },
         //时间转换
         dateFormat(date) {
             var date = new Date(date * 1000);

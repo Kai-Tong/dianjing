@@ -55,6 +55,7 @@
                     <div class="post_detail"
                     v-for="(item,index) in articleList" 
                     :key="index"
+                    @click="toPostDetail(item)"
                     >
                         <div class="detail_post_title">
                             <img :src="item.ch_logo" alt="">
@@ -140,6 +141,9 @@ export default {
     };
   },
   methods: {
+    toPostDetail(item){
+      window.location.href = this.JuheHOST+ '/forum/' + item.ch_columnm_key + '/' + item.ch_key + '/' + item.id + '.html'
+    },
     //获取个人信息
       getInfo(){
           this.$axios({
