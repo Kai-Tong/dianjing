@@ -5,7 +5,12 @@
       <div class="no1searchheader">搜索结果</div>
       <div class="keywords_div cl">
         <div class="left">关键词：</div>
-        <input type="text" class="keywords_input left" v-model="keywords"  @keyup.enter="changeoption()" />
+        <input
+          type="text"
+          class="keywords_input left"
+          v-model="keywords"
+          @keyup.enter="changeoption()"
+        />
         <div class="no1searchbtn left cl" @click="changeoption()">
           <div class="left"></div>
           搜索
@@ -127,7 +132,9 @@
                 @click="goPerson(item.id)"
               />
             </div>
-            <div class="user left" @click="goPerson(item.id)">{{ item.user_nickname }}</div>
+            <div class="user left" @click="goPerson(item.id)">
+              {{ item.user_nickname }}
+            </div>
             <div class="user left guanzhu cu" @click="attention(item)">
               {{ item.is_followed == 0 ? "关注" : "已关注" }}
             </div>
@@ -356,11 +363,39 @@ export default {
   },
   components: {
     headerlogin,
-    Footer
+    Footer,
   },
   created() {
-    this.inst();
-    this.changesearch_type(1);
+    if (
+      localStorage.getItem("searchtype") &&
+      localStorage.getItem("searchtype") != "" &&
+      localStorage.getItem("searchtype").length > 0 &&
+      localStorage.getItem("searchtype") != null
+    ) {
+      if (
+        localStorage.getItem("searchinputs") &&
+        localStorage.getItem("searchinputs") != "" &&
+        localStorage.getItem("searchinputs").length > 0 &&
+        localStorage.getItem("searchinputs") != null
+      ) {
+        this.keywords = localStorage.getItem("searchinputs");
+        this.changesearch_type(localStorage.getItem("searchtype"));
+      }
+    } else {
+      if (
+        localStorage.getItem("searchinputs") &&
+        localStorage.getItem("searchinputs") != "" &&
+        localStorage.getItem("searchinputs").length > 0 &&
+        localStorage.getItem("searchinputs") != null
+      ) {
+        this.keywords = localStorage.getItem("searchinputs");
+        this.inst();
+        this.changesearch_type(1);
+      } else {
+        this.inst();
+        this.changesearch_type(1);
+      }
+    }
   },
 };
 </script>
