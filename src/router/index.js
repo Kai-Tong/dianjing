@@ -8,11 +8,6 @@ const Attention = import('../page/person/subperson/attention.vue');
 const Fans = import('../page/person/subperson/fans.vue');
 const Replyarticle = import('../page/person/subperson/replyarticle.vue');
 const Information = import('../page/person/subperson/information.vue');
-const Hispage = import('../page/hispage/hispage.vue');
-const Hishomeperson = import('../page/hispage/subperson/hishomeperson.vue');
-const Hisarticle = import("../page/hispage/subperson/hisarticle.vue");
-const Hisattention = import('../page/hispage/subperson/hisattention.vue');
-const Hisfans = import('../page/hispage/subperson/hisfans.vue');
 const Settings = import('../page/Settings/Setting.vue');
 const Setinfo = import('../page/Settings/subsetinfo/setinfo.vue');
 const Helps = import('../page/helps/helps.vue');
@@ -110,34 +105,6 @@ export default new Router({
           path:"information/:user_uid",
           name:"information",
           component: () => Information,
-        },
-      ]
-    },
-    {
-      path: '/hispage',
-      name: 'hispage',
-      meta: {
-        requireAuth: true
-      },
-      redirect:"/hispage/hishomeperson",
-      component: () => Hispage,
-      children:[
-        {
-          path:"hishomeperson",
-          name:'hishomeperson',
-          component: () => Hishomeperson,
-        },
-        {
-          path:"hisarticle",
-          component: () => Hisarticle,
-        },
-        {
-          path:"hisattention",
-          component: () => Hisattention,
-        },
-        {
-          path:"hisfans",
-          component: () => Hisfans,
         },
       ]
     },
