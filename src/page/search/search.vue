@@ -108,7 +108,7 @@
             :key="item.id"
             @click="gotonewsdel(item)"
           >
-            <div class="left news_title1 ov" >{{ item.news_title }}</div>
+            <div class="left news_title1 ov">{{ item.news_title }}</div>
             <div class="left news_title1">{{ item.ch_name }}</div>
             <div class="left news_title1">
               {{ item.news_addtime | formDate }}
@@ -309,9 +309,9 @@ export default {
         });
     },
     gotonewsdel(e) {
-      console.log(e)
-      let url = `http://dev.qubodianjing.com/news/${e.ch_columnm_key}/${e.ch_key}/${e.id}.html`
-      window.open(url)
+      console.log(e);
+      let url = `http://dev.qubodianjing.com/news/${e.ch_columnm_key}/${e.ch_key}/${e.id}.html`;
+      window.open(url);
     },
     gotocommdel() {
       this.$router.push("/communitydel");
@@ -355,7 +355,7 @@ export default {
         this.$router.push("/person");
       } else {
         console.log(value);
-        this.$router.push({ name: "hishomeperson", params: { uname: value } });
+        this.$router.push({ name: "person", params: { user_uid: value } });
       }
     },
   },
