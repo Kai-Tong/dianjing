@@ -29,6 +29,10 @@
               v-model="articletitle"
             />
             <hr />
+            <p v-if='isShow' style="color:red;text-align: left;">编辑内容不能超过5000个字
+              <el-button class="" type="info" @click="reenter()"
+                >重新输入</el-button
+              ></p>
             <div id="editor"></div>
             <div class="btn_con">
               <el-button class="cancler" type="info" plain @click="cancleHandler"
@@ -78,6 +82,7 @@ export default {
       editorData: "",
       value: [],
       options: [],
+      isShow:false,
     };
   },
   mounted() {
@@ -230,7 +235,26 @@ export default {
     editor.create();
     this.editor = editor;
   },
+  watch:{
+      editorData:function(value , e){
+          if (value == this.editor.txt.html()) {
+            var temp = this.editorData.replace(/<\/?.+?>/g, "");
+            var result = temp.replace(/ /g, "");
+            this.spanInfo =result.length
+            if(this.spanInfo>5000){
+                this.isShow = true
+                this.editor.disable()
+            }else{
+                this.isShow = false
+                this.editor.enable()
+            }
+          }
+      }
+  },
   methods: {
+    reenter(){
+      this.editor.enable()
+    },
     getEditorData() {
       // 通过代码获取编辑器内容
       if (this.articletitle && this.value[1]) {

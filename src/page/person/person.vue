@@ -48,7 +48,7 @@
                     <div class="title_tag">
                         <img src="../../image/newpost.png" alt="" v-if="!isme">
                         <img src="../../image/mypost.png" alt="" v-if="isme">
-                        <a href="#">
+                        <a href="http://dev.qubodianjing.com/forum">
                             <div class="hot_bisai_more"></div>
                         </a>
                     </div>
@@ -104,7 +104,7 @@ export default {
       flag:'',//关注1,取消关注2
       profile:{},
       uid:this.$route.params.user_uid,
-      person_src:"http://localhost:8080/front/person/homeperson/" + this.$route.params.user_uid,
+      person_src:"http://dev.qubodianjing.com/user/person/homeperson/" + this.$route.params.user_uid,
       articleList: [],
       personNav: [
         {

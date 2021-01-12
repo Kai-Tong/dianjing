@@ -17,14 +17,12 @@
                   <div class="question_title" @click="questionThree()"><img src="../../image/ic2x.png" alt="">收不到验证码？</div>
                 </el-collapse-item> -->
                 <el-collapse-item title="问题分类1" name="2">
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁的账号无法登录？</div>
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁忘记密码怎么办？</div>
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁收不到验证码？</div>
+                  <div class="question_title" @click="questionOne()"><img src="../../image/ic2x.png" alt="">账号无法登录？</div>
+                  
                 </el-collapse-item>
                 <el-collapse-item title="问题分类2" name="3">
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁的账号无法登录？</div>
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁忘记密码怎么办？</div>
-                  <div class="question_title"><img src="../../image/ic2x.png" alt="">谁收不到验证码？</div>
+                  <div class="question_title" @click="questionTwo()"><img src="../../image/ic2x.png" alt="">忘记密码怎么办？</div>
+                  <div class="question_title" @click="questionThree()"><img src="../../image/ic2x.png" alt="">收不到验证码？</div>
                 </el-collapse-item>
               </el-collapse>
               <div class="customer">
