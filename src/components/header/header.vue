@@ -63,7 +63,7 @@
             />
             <div class="login_exit" onclick="loginexit()">退出</div>
           </div>
-          <div class="header_showsuer">
+          <div class="header_showsuer" style="display:none">
             <div class="" @click="toperson">个人主页</div>
             <div class="" @click="tosettings">设置</div>
             <div class="" @click="topost">我的帖子</div>
