@@ -9,6 +9,7 @@
           type="text"
           class="keywords_input left"
           v-model="keywords"
+          maxlength="20"
           @keyup.enter="changeoption()"
         />
         <div class="no1searchbtn left cl" @click="changeoption()">
