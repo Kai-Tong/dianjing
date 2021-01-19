@@ -81,10 +81,10 @@ export default {
             .then(res => {
                 // console.log(res);
                 if (res.data.code == 1) {
-                    this.$message({
-                        type: 'error', // warning、success
-                        message: res.data.msg 
-                    }) 
+                    // this.$message({
+                    //     type: 'error', // warning、success
+                    //     message: res.data.msg 
+                    // }) 
                 } else if (res.data.code == 0) {
                     this.total = res.data.params.pagination.total;
                     this.pageSize = res.data.params.pagination.page_size;
