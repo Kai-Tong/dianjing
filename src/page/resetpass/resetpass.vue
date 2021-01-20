@@ -143,7 +143,7 @@
 
 <script>
 import { mapState } from "vuex";
-const headerlogin = () => import("@/components/header/header");
+const headerlogin = () => import("@/components/header/header1");
 const Footer = () => import("../../components/footer/footer");
 export default {
   name: "login",
