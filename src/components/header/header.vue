@@ -63,7 +63,7 @@
             />
             <div class="login_exit" onclick="loginexit()">退出</div>
           </div>
-          <div class="header_showsuer" style="display:none">
+          <div class="header_showsuer" style="display: none">
             <div class="" @click="toperson">个人主页</div>
             <div class="" @click="tosettings">设置</div>
             <div class="" @click="topost">我的帖子</div>
@@ -155,6 +155,12 @@
                 placeholder="请输入登录密码"
                 id="pwd_login"
               />
+              <img
+                :src="showpwdsimg"
+                alt=""
+                class="showpwd"
+                @click="showpwds($event)"
+              />
             </div>
           </div>
         </div>
@@ -206,8 +212,14 @@
               <img src="../image/ic密码@2x.png" alt="" />
               <input
                 type="password"
-                placeholder="请输入6-16位密码，区分大小写"
+                placeholder="至少含2种字母、数字、标点符号，6~16个字符的组合"
                 id="registered_pwd"
+              />
+              <img
+                :src="showpwdsimg"
+                alt=""
+                class="showpwd"
+                @click="showpwds($event)"
               />
             </div>
           </div>
@@ -219,6 +231,12 @@
                 type="password"
                 placeholder="请再次输入密码"
                 id="registered_pwd2"
+              />
+              <img
+                :src="showpwdsimg"
+                alt=""
+                class="showpwd"
+                @click="showpwds($event)"
               />
             </div>
           </div>
@@ -300,9 +318,21 @@ export default {
   data() {
     return {
       tokenflag: false,
+      showpwdsimg: require("../image/login/ic-nosee@2x.png"),
+      showpwdsimg1: require("../image/login/ic-see@2x.png"),
     };
   },
   methods: {
+    showpwds(e) { //修改密码框显示隐藏
+      let borObj = e.currentTarget.previousElementSibling.type
+      if(borObj == "password"){
+        e.path[0].src = this.showpwdsimg1;
+        e.currentTarget.previousElementSibling.type = "text"
+      }else{
+        e.path[0].src = this.showpwdsim;
+        e.currentTarget.previousElementSibling.type = "password"
+      }
+    },
     showtoken() {
       let token = localStorage.getItem("token");
       if (token != null) {
