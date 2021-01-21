@@ -61,39 +61,19 @@
     localStorage.setItem("searchinputs", $("#headersearch").val())
   })
 
-  function changesearchtype() {
-    $(".headerseles").text(event.target.innerHTML)
-    $('.headerseles_more_div').hide();
-    let type = 1
-    switch (event.target.innerHTML) {
-      case "资讯":
-        type = 1
-        break;
-      case "帖子":
-        type = 2
-        break;
-      case "用户":
-        type = 3
-        break;
-      default:
-        type = 1
-        break;
-    }
-    localStorage.setItem("searchtype", type)
-  }
   //搜索栏目显示隐藏
-  var headerseles_more_flag = false
-  $('.headerseles_more_div').hide()
 
-  function showsearchList() {
-    if (headerseles_more_flag) {
-      $('.headerseles_more_div').hide()
-      headerseles_more_flag = false
-    } else {
-      $('.headerseles_more_div').show()
-      headerseles_more_flag = true
-    }
-  }
+  // $('.headerseles_more_div').hide()
+
+  // function showsearchList() {
+  //   if (headerseles_more_flag) {
+  //     $('.headerseles_more_div').hide()
+  //     headerseles_more_flag = false
+  //   } else {
+  //     $('.headerseles_more_div').show()
+  //     headerseles_more_flag = true
+  //   }
+  // }
   // 自动登录勾选
   var clickdengluFlag = false
 

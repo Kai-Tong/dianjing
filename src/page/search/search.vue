@@ -1,6 +1,6 @@
 <template>
   <div id="search">
-    <headerlogin></headerlogin>
+    <headerlogin @searchtype="headerChange"></headerlogin>
     <div class="search_content boxshadow">
       <div class="no1searchheader">搜索结果</div>
       <div class="keywords_div cl">
@@ -173,11 +173,11 @@ export default {
       searchtype: [
         {
           id: 1,
-          name: "新闻",
+          name: "咨询",
         },
         {
           id: 2,
-          name: "圈子",
+          name: "贴子",
         },
         {
           id: 3,
@@ -249,6 +249,9 @@ export default {
       console.log(this.radio);
       this.page = 1;
       this.getsearchdata();
+    },
+    headerChange(type){//头部修改
+     this.changesearch_type(type)
     },
     attention(item) {
       //关注用户

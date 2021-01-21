@@ -146,7 +146,6 @@
 }
 .headerseles_more_div {
   position: absolute;
-  display: none;
   left: 30px;
   bottom: -50px;
   background-image: linear-gradient(#1e1e23, #1e1e23), linear-gradient(#f0d38f, #f0d38f);

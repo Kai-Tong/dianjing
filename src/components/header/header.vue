@@ -27,19 +27,18 @@
           <div class="navfenge"></div>
         </div>
         <div class="header_search">
-          <div class="headerseles">资讯</div>
-          <div class="headerseles_img" onclick="showsearchList()"></div>
+          <div class="headerseles">{{pickSearch}}</div>
+          <div class="headerseles_img" @click="showsearchList()"></div>
           <input type="text" id="headersearch" />
           <div class="header_search_img" @click="gotosearch()"></div>
-          <div class="headerseles_more_div">
-            <div class="headerseles_more" onclick="changesearchtype()">
-              帖子
-            </div>
-            <div class="headerseles_more" onclick="changesearchtype()">
-              用户
-            </div>
-            <div class="headerseles_more" onclick="changesearchtype()">
-              资讯
+          <div class="headerseles_more_div" v-show="showsearchData">
+            <div
+              class="headerseles_more"
+              v-for="(item, index) in searchData"
+              :key="index"
+              @click="changesearchtype(item.text, item.type)"
+            >
+              {{ item.text }}
             </div>
           </div>
         </div>
@@ -320,17 +319,43 @@ export default {
       tokenflag: false,
       showpwdsimg: require("../image/login/ic-nosee@2x.png"),
       showpwdsimg1: require("../image/login/ic-see@2x.png"),
+      searchData: [
+        {
+          text: "资讯",
+          type: 1,
+        },
+        {
+          text: "帖子",
+          type: 2,
+        },
+        {
+          text: "用户",
+          type: 3,
+        },
+      ],//搜索框Data
+      showsearchData:false,//是否展开搜索框
+      pickSearch:"资讯",//选中类型
     };
   },
   methods: {
-    showpwds(e) { //修改密码框显示隐藏
-      let borObj = e.currentTarget.previousElementSibling.type
-      if(borObj == "password"){
+    showsearchList(){//展开搜索选项框
+      this.showsearchData = !this.showsearchData
+    },
+    changesearchtype(text, type) {//选中搜索切换类型
+      this.showsearchData = false
+      this.pickSearch = text
+       this.$emit('searchtype',type)
+      localStorage.setItem("searchtype", type);
+    },
+    showpwds(e) {
+      //修改密码框显示隐藏
+      let borObj = e.currentTarget.previousElementSibling.type;
+      if (borObj == "password") {
         e.path[0].src = this.showpwdsimg1;
-        e.currentTarget.previousElementSibling.type = "text"
-      }else{
+        e.currentTarget.previousElementSibling.type = "text";
+      } else {
         e.path[0].src = this.showpwdsim;
-        e.currentTarget.previousElementSibling.type = "password"
+        e.currentTarget.previousElementSibling.type = "password";
       }
     },
     showtoken() {
