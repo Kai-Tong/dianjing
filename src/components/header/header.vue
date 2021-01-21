@@ -29,7 +29,7 @@
         <div class="header_search">
           <div class="headerseles">{{pickSearch}}</div>
           <div class="headerseles_img" @click="showsearchList()"></div>
-          <input type="text" id="headersearch" />
+          <input type="text" id="headersearch" v-model="searchmsg" />
           <div class="header_search_img" @click="gotosearch()"></div>
           <div class="headerseles_more_div" v-show="showsearchData">
             <div
@@ -335,6 +335,7 @@ export default {
       ],//搜索框Data
       showsearchData:false,//是否展开搜索框
       pickSearch:"资讯",//选中类型
+      searchmsg:"",//搜索内容
     };
   },
   methods: {
@@ -369,8 +370,12 @@ export default {
       }
       console.log(token != null, this.tokenflag);
     },
-    gotosearch() {
-      this.$router.push("/search");
+    gotosearch() {//跳转或者搜索内容
+      if(this.$route.path == "/search"){
+        this.$emit("searchmsg",this.searchmsg)
+      }else{
+        this.$router.push("/search");
+      }
     },
     toperson() {
       this.$router.push({

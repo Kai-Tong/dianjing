@@ -1,6 +1,6 @@
 <template>
   <div id="search">
-    <headerlogin @searchtype="headerChange"></headerlogin>
+    <headerlogin @searchtype="headerChange" @searchmsg="headermsg"></headerlogin>
     <div class="search_content boxshadow">
       <div class="no1searchheader">搜索结果</div>
       <div class="keywords_div cl">
@@ -250,8 +250,12 @@ export default {
       this.page = 1;
       this.getsearchdata();
     },
-    headerChange(type){//头部修改
+    headerChange(type){//头部修改搜索框内容
      this.changesearch_type(type)
+    },
+    headermsg(msg){//头部搜索关键字
+        this.keywords = msg;
+        this.getsearchdata()
     },
     attention(item) {
       //关注用户
