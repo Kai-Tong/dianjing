@@ -26,31 +26,8 @@
                     </a>
                     <div class="navfenge"></div>
                 </div>
-                <!-- <div class="header_search">
-                    <div class="headerseles">
-                        贴子
-                    </div>
-                    <div class="headerseles_img" onclick="showsearchList()">
-    
-                    </div>
-                    <input type="text" @focus="tosearch()">
-                    <div class="header_search_img">
-    
-                    </div>
-                    <div class="headerseles_more_div">
-                        <div class="headerseles_more" onclick="changesearchtype()">
-                        帖子
-                        </div>
-                        <div class="headerseles_more" onclick="changesearchtype()">
-                        用户
-                        </div>
-                        <div class="headerseles_more" onclick="changesearchtype()">
-                        资讯
-                        </div>
-                    </div>
-                </div> -->
                 <div class="header_search">
-                    <div class="headerseles">帖子</div>
+                    <!-- <div class="headerseles">帖子</div>
                     <div class="headerseles_img" onclick="showsearchList()"></div>
                     <input type="text" />
                     <div class="header_search_img" @click="gotosearch()"></div>
@@ -63,6 +40,20 @@
                         </div>
                         <div class="headerseles_more" onclick="changesearchtype()">
                         资讯
+                        </div>
+                    </div> -->
+                    <div class="headerseles">{{pickSearch}}</div>
+                    <div class="headerseles_img" @click="showsearchList()"></div>
+                    <input type="text" id="headersearch" v-model="searchmsg" />
+                    <div class="header_search_img" @click="gotosearch()"></div>
+                    <div class="headerseles_more_div" v-show="showsearchData">
+                        <div
+                        class="headerseles_more"
+                        v-for="(item, index) in searchData"
+                        :key="index"
+                        @click="changesearchtype(item.text, item.type)"
+                        >
+                        {{ item.text }}
                         </div>
                     </div>
                 </div>
@@ -121,7 +112,23 @@ export default {
     name:'',
     data(){
         return{
-            selected:false,
+            searchData: [
+                {
+                text: "资讯",
+                type: 1,
+                },
+                {
+                text: "帖子",
+                type: 2,
+                },
+                {
+                text: "用户",
+                type: 3,
+                },
+            ],//搜索框Data
+            showsearchData:false,//是否展开搜索框
+            pickSearch:"资讯",//选中类型
+            searchmsg:"",//搜索内容
             menuitem: [
                 {
                 title: "账号设置",
@@ -141,8 +148,21 @@ export default {
         }
     },
     methods:{
-        gotosearch() {
-            this.$router.push("/search");
+        showsearchList(){//展开搜索选项框
+        this.showsearchData = !this.showsearchData
+        },
+        changesearchtype(text, type) {//选中搜索切换类型
+        this.showsearchData = false
+        this.pickSearch = text
+        this.$emit('searchtype',type)
+        localStorage.setItem("searchtype", type);
+        },
+         gotosearch() {//跳转或者搜索内容
+            if(this.$route.path == "/search"){
+                this.$emit("searchmsg",this.searchmsg)
+            }else{
+                this.$router.push("/search");
+            }
         },
         gotosm(src) {
             console.log(src);
@@ -208,7 +228,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .header {
     width: 100%;
     position: fixed;
@@ -324,8 +344,9 @@ export default {
 }
 
 .header_search {
-    margin-left: 253px;
-    width: 290px;
+    position: relative;
+    margin-left: 1.265px * 200;
+    width: 1.45px * 200;
     height: 45px;
     background-image: linear-gradient(#1e1e23,
             #1e1e23),
@@ -338,7 +359,7 @@ export default {
     position: relative;
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size:16px;
     color: #fff;
 }
 
@@ -346,12 +367,12 @@ export default {
     background-image: url('../../image/search1@2x.png');
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 23px;
-    height: 23px;
+    width: 0.115px * 200;
+    height: 0.115px * 200;
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 18px;
+    right: 0.09px * 200;
     margin: auto;
 }
 
@@ -368,17 +389,17 @@ export default {
     background-blend-mode: normal,
         normal;
     color: #fff;
-    width: 166px;
+    width: 0.83px * 200;
     font-size: 16px;
 }
 
 .headerseles_img {
-    margin-left: 6px;
+    margin-left: 0.03px * 200;
     background-image: url('../../image/帖子-down1@2x.png');
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 15px;
-    height: 8px;
+    width: 0.075px * 200;
+    height: 0.04px * 200;
 }
 
 .headerseles_img:hover {
@@ -387,15 +408,31 @@ export default {
 }
 
 .headerseles {
-    margin-left: 19px;
+    margin-left: 0.095px * 200;
     color: #828282;
     font-size: 14px;
-    width: 40px;
+    width: 0.2px * 200;
     text-align: center;
 }
-
+.headerseles_more_div{
+    position: absolute;
+    left: .15px * 200;
+    bottom: -0.25px * 200;
+    background-image: linear-gradient(#1e1e23, #1e1e23), linear-gradient(#f0d38f, #f0d38f);
+    
+}
+.headerseles_more{
+    color: #fff;
+    font-size: 14px;
+    width: 0.3px * 200;
+    text-align: center;
+}
 .headerseles:hover {
     color: #fdfdfd;
+}
+.headerseles_more:hover{
+    color: #fdfdfd;
+    cursor: pointer;
 }
 
 .headerlogin_div {
@@ -502,27 +539,6 @@ export default {
 .el-dropdown-menu__item:not(.is-disabled):hover{
       background: rgba(0,0,0,.5) !important;
       color: #f0d38f !important;
-}
-.headerseles_more_div{
-    position: absolute;
-    display: none;
-    left: 30px;
-    top: 30px;
-    /* bottom: 50px; */
-    background-image: linear-gradient(#1e1e23, #1e1e23), linear-gradient(#f0d38f, #f0d38f);  
-}
-.headerseles_more{
-    color: #fff;
-    font-size: 14px;
-    width: 0.3px * 200;
-    text-align: center;
-}
-.headerseles:hover {
-    color: #fdfdfd;
-}
-.headerseles_more:hover{
-    color: #fdfdfd;
-    cursor: pointer;
 }
 </style>
 <style>
