@@ -122,7 +122,7 @@
   }
 
   function loginexit() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('pctoken')
     localStorage.removeItem('user_info')
     istoken()
   }
@@ -144,7 +144,7 @@
   istoken()
 
   function istoken() {
-    var token = localStorage.getItem("token");
+    var token = localStorage.getItem("pctoken");
     var user_info = JSON.parse(localStorage.getItem('user_info'));
     console.log(user_info)
     if (token != false && token != null) {
@@ -193,7 +193,7 @@
                     token,
                     user_info
                   } = params
-                  localStorage.setItem("token", token);
+                  localStorage.setItem("pctoken", token);
                   localStorage.setItem("user_info", JSON.stringify(user_info));
                   $('.registered').hide();
                   istoken()
@@ -281,7 +281,7 @@
             } = data
             if (code == 0) {
               $('#login').hide();
-              localStorage.setItem("token", token);
+              localStorage.setItem("pctoken", token);
               localStorage.setItem("user_info", JSON.stringify(user_info));
               istoken()
               toast('登录成功');
@@ -315,7 +315,7 @@
           } = params
           if (code == 0) {
             $('#login').hide();
-            localStorage.setItem("token", token);
+            localStorage.setItem("pctoken", token);
             localStorage.setItem("user_info", JSON.stringify(user_info));
             istoken()
             toast('登录成功');
