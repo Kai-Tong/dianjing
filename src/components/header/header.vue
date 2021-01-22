@@ -360,7 +360,7 @@ export default {
       }
     },
     showtoken() {
-      let token = localStorage.getItem("token");
+      let token = localStorage.getItem("pctoken");
       if (token != null) {
         let user_info = JSON.parse(localStorage.getItem("user_info"));
         this.tokenflag = true;

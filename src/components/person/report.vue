@@ -95,7 +95,7 @@ export default {
       return {
         imgurl:this.JuheHOST,
         uploadreport:`${this.$api.report.uploadreport}/${this.report_type}`,
-        Myheaders:{token : localStorage.getItem("token")},
+        Myheaders:{token : localStorage.getItem("pctoken")},
         uploadData:{
             type:'',
             id:'',

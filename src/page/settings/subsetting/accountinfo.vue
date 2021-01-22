@@ -76,7 +76,7 @@ export default {
             imgurl:this.JuheHOST,
             uploadActionUrl:this.$api.uploadActionUrl,
             avator:require("@/image/news.jpeg"),
-            Myheaders:{token : localStorage.getItem("token")},
+            Myheaders:{token : localStorage.getItem("pctoken")},
             showList:false,
             infoList:{
                 user_pic:''

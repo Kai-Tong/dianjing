@@ -237,6 +237,7 @@
 .header_showsuer div {
   padding: 0.1rem;
   cursor: pointer;
+  color: #828282;
 }
 .header_showsuer div:hover {
   color: #f0d38f;

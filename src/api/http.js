@@ -67,7 +67,7 @@ const errorHandler = (status, other) => {
     }
 }
 //其他请求携带token
-axios.defaults.headers.common['token'] = localStorage.getItem('token');
+axios.defaults.headers.common['token'] = localStorage.getItem('pctoken');
 axios.interceptors.request.use(
     config => {
             config.headers.client = 'web';
@@ -121,7 +121,7 @@ instance.interceptors.request.use(function(config) {
     }
     // console.log(initStore.state.token);
     config.headers.client = 'web';
-    config.headers.token = localStorage.getItem('token')
+    config.headers.token = localStorage.getItem('pctoken')
     const options = {
         headers:{
            ' Cache-Control' : "no-cache"

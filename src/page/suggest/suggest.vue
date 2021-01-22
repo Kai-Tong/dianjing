@@ -283,7 +283,7 @@ export default {
     // }
     //header携带token
     editor.config.uploadImgHeaders = {
-      token: localStorage.getItem("token"),
+      token: localStorage.getItem("pctoken"),
     };
     editor.config.uploadFileName = "file[]";
     //取消网络图片上传

@@ -301,7 +301,7 @@ export default {
     this.activeIndex2 = this.headerKey;
   },
   mounted() {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("pctoken")) {
       this.getbasic();
     }
   },

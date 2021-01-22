@@ -66,7 +66,7 @@ Vue.directive('preventReClick', {
 router.beforeEach((to, from, next) => {
   if (to.matched.some((item) => item.meta.requireAuth)) {
     // let token = true
-    let token = localStorage.getItem("token");
+    let token = localStorage.getItem("pctoken");
     // console.log(token);
     if (token) {
       next();
